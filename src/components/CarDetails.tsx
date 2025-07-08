@@ -52,29 +52,52 @@ function CarDetails() {
   useEffect(()=>{
     fetchCarDetails()
   }, [])
-  return (
-    <div className='overflow-x-auto rounded-box border border-base-content/5 bg-base-100 my-8 mx-8'>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Car Models</th>
-            <th>Type</th>
-            <th>Cost per km</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cars.map((car, index)=>(
-            <tr key={car.id}>
-              <th>{index+1}</th>
-              <td>{car.car_model}</td>
-              <td>{car.type}</td>
-              <td>{car.cost_per_km}</td>
-            </tr>
-          ))}
 
-        </tbody>
-      </table>
+  let handleEnquiry = async () => {
+    let response = await fetch(`${import.meta.env.VITE_SERVER_URL}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({message: `Message from soham`}),
+      }
+      )
+      
+      let data = await response.json();
+
+      console.log(data);
+  }
+
+  return (
+    
+    <div>
+      <div className='overflow-x-auto rounded-box border border-base-content/5 bg-base-100 my-8 mx-8'>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Car Models</th>
+              <th>Type</th>
+              <th>Cost per km</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cars.map((car, index)=>(
+              <tr key={car.id}>
+                <th>{index+1}</th>
+                <td>{car.car_model}</td>
+                <td>{car.type}</td>
+                <td>{car.cost_per_km}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className='m-6'>
+        Want to enquire? 
+        <button className='btn mx-2' onClick={handleEnquiry}>Enquire</button>
+      </div>
     </div>
   )
 }
