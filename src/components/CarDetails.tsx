@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 interface Car {
@@ -17,14 +17,14 @@ interface Owner {
   cars : Car[];
 }
 
-interface Driver {
-  id : number;
-  full_name : string;
-  ph_no: number;
-  other_info:string;
-  travel_agency_name:string;
-  driver_cost_per_day:string;
-}
+// interface Driver {
+//   id : number;
+//   full_name : string;
+//   ph_no: number;
+//   other_info:string;
+//   travel_agency_name:string;
+//   driver_cost_per_day:string;
+// }
 
 function CarDetails() {
 
